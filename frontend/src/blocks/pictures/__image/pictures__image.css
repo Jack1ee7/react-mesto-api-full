@@ -1,0 +1,13 @@
+.pictures__image {
+  height: 282px;
+  width: 282px;
+  background-color: #FFFFFF;
+  cursor: pointer;
+  object-fit: cover;
+  transition: .3s transform ease;
+  z-index: 0;
+}
+
+.pictures__image:hover { 
+  transform: scale(1.1);
+}

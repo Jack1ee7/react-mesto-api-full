@@ -1,0 +1,10 @@
+.profile__avatar-edit-ico {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: none;
+  margin: auto;
+  position: absolute;
+  pointer-events: none;
+}

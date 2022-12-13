@@ -1,0 +1,18 @@
+.pictures {
+  margin-top: 50px;
+  padding-bottom: 67px;
+}
+
+@media screen and (max-width: 950px) {
+  .pictures {
+    margin-left: 19px;
+    margin-right: 19px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .pictures {
+    padding-bottom: 48px;
+    margin-top: 36px;
+  }
+}

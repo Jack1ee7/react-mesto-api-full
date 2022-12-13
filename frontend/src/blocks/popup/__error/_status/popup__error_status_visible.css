@@ -1,0 +1,7 @@
+.popup__error_status_visible {
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-style: normal;
+  line-height: 15px;
+  font-size: 12px;
+  margin-top: 5px;
+}
