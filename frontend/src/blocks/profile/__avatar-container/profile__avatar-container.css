@@ -1,0 +1,9 @@
+.profile__avatar-container {
+  position: relative;
+  border-radius: 50%;
+  max-height: 120px;
+}
+
+.profile__avatar-container:hover .profile__avatar-edit-ico {
+  display: block;
+}

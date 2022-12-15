@@ -1,0 +1,14 @@
+.header__logout-button {
+    text-decoration: none;
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #A9A9A9;
+    transition: opacity .3s ease;
+}
+
+.header__logout-button:hover {
+    opacity: 0.85;
+}

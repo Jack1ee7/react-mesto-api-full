@@ -1,0 +1,14 @@
+.page {
+  background: #000000;
+  min-width: 320px; /* 302px */
+  min-height: 100vh;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  font-family: 'Inter', 'Arial', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}

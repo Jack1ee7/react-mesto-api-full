@@ -1,0 +1,18 @@
+.authentication__form-submit-button {
+    border: none;
+    background: #fff;
+    height: 50px;
+    width: 100%;
+    margin-top: 186px;
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    transition: opacity .3s ease;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.authentication__form-submit-button:hover {
+    opacity: 0.85;
+  }
