@@ -109,6 +109,7 @@ const App = () => {
           //profile
           setCurrentUser(userData);
           //cards
+          cardList.reverse();
           setCards(cardList);
         })
         .catch((err) => {
@@ -146,7 +147,7 @@ const App = () => {
       .changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
         setCards((state) =>
-          state.map((c) => (c._id === card._id ? newCard : c))
+          state.map((c) => (c._id === card._id ? newCard.card : c))
         );
       })
       .catch((err) => {
@@ -178,7 +179,7 @@ const App = () => {
     api
       .setUserInfo(userData)
       .then((data) => {
-        setCurrentUser(data.user);
+        setCurrentUser(data);
         closeAllPopups();
       })
       .catch((err) => 
