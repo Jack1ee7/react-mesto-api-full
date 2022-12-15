@@ -1,14 +1,13 @@
 class Api {
   constructor(config) {
     this._url = config.baseUrl;
+    this._headers = config.headers;
   }
 
   register(email, password) {
     return fetch(`${this._url}/signup`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
       body: JSON.stringify({ email, password }),
       credentials: 'include',
     }).then(this._getResponseData);
@@ -17,9 +16,7 @@ class Api {
   authorize(email, password) {
     return fetch(`${this._url}/signin`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
       body: JSON.stringify({ email, password }),
       credentials: 'include',
     }).then(this._getResponseData);
@@ -28,9 +25,7 @@ class Api {
   getContent() {
     return fetch(`${this._url}/users/me`, {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
       credentials: 'include',
     }).then(this._getResponseData);
   }
@@ -88,7 +83,9 @@ class Api {
   sendNewCard(data) {
     return fetch(`${this._url}/cards`, {
       method: "POST",
-      headers: this._headers,
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         name: data.name,
         link: data.link,
@@ -130,6 +127,11 @@ class Api {
   }
 }
 
-const api = new Api({ baseUrl: "https://api.mesto.jack1ee7.nomoredomains.club" });
+const api = new Api({ 
+  baseUrl: "https://api.mesto.jack1ee7.nomoredomains.club",
+  headers: {
+    "Content-Type": "application/json",
+  },
+ });
 
 export default api;

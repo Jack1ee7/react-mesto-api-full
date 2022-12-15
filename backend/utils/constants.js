@@ -2,6 +2,7 @@ const REGEX = /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]
 
 const CORS = {
   origin: [
+    'http://localhost:3001',
     'http://localhost:3000',
     'https://mesto.jack1ee7.nomoredomains.club',
     'http://mesto.jack1ee7.nomoredomains.club',
