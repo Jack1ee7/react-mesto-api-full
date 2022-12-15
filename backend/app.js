@@ -5,23 +5,11 @@ require('dotenv').config();
 const { errors } = require('celebrate');
 const cors = require('cors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-
-const options = {
-  origin: [
-    'http://localhost:3001',
-    'https://mesto.jack1ee7.nomoredomains.club',
-    'http://mesto.jack1ee7.nomoredomains.club',
-  ],
-  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-  preflightContinue: false,
-  optionsSuccessStatus: 204,
-  allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
-  credentials: true,
-};
+const { CORS } = require('./utils/constants');
 
 const app = express();
 
-app.use('*', cors(options));
+app.use('*', cors(CORS));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
