@@ -5,6 +5,7 @@ const CORS = {
     'http://localhost:3001',
     'https://mesto.jack1ee7.nomoredomains.club',
     'http://mesto.jack1ee7.nomoredomains.club',
+    'https://jack1ee7.github.io',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
