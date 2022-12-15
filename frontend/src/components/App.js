@@ -44,10 +44,7 @@ const App = () => {
 
   // check if token in local storage, if it exists then auth user
   useEffect(() => {
-    const jwt = localStorage.getItem("jwt");
-    if (jwt) {
-      auth();
-    }
+    auth();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -88,7 +85,7 @@ const App = () => {
       .then((res) => {
         if (res) {
           setEmail(email);
-          localStorage.setItem("jwt", document.cookie.split("=")[1]);
+          localStorage.setItem("loggedIn", "true");
           setIsLoggedIn(true);
           history.push("/");
         }
@@ -119,7 +116,7 @@ const App = () => {
   }, [isLoggedIn]);
 
   const handleLogout = () => {
-    localStorage.removeItem("jwt");
+    localStorage.removeItem("loggedIn");
     setIsLoggedIn(false);
   }
 
