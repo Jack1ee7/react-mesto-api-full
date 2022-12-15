@@ -129,6 +129,6 @@ class Api {
   }
 }
 
-const api = new Api({ baseUrl: "api.mesto.jack1ee7.nomoredomains.club" });
+const api = new Api({ baseUrl: "https://api.mesto.jack1ee7.nomoredomains.club" });
 
 export default api;
