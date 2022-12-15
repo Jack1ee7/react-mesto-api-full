@@ -25,12 +25,13 @@ class Api {
     }).then(this._getResponseData);
   }
 
-  getContent(jwt) {
+  getContent() {
     return fetch(`${this._url}/users/me`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: 'include',
     }).then(this._getResponseData);
   }
 
