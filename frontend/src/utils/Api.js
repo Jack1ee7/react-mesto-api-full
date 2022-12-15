@@ -129,6 +129,6 @@ class Api {
   }
 }
 
-const api = new Api({ baseUrl: "http://localhost:3000" });
+const api = new Api({ baseUrl: "api.mesto.jack1ee7.nomoredomains.club" });
 
 export default api;
