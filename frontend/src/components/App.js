@@ -46,15 +46,15 @@ const App = () => {
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
-      auth(jwt);
+      auth();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // auth user by using token
   // then set loggedIn to true if successful and redirect to main page
-  const auth = (jwt) => {
-    return api.getContent(jwt).then(({ data }) => {
+  const auth = () => {
+    return api.getContent().then((data) => {
       if (data) {
         setEmail(data.email);
         setIsLoggedIn(true);
@@ -178,7 +178,7 @@ const App = () => {
     api
       .setUserInfo(userData)
       .then((data) => {
-        setCurrentUser(data);
+        setCurrentUser(data.user);
         closeAllPopups();
       })
       .catch((err) => 
