@@ -95,7 +95,7 @@ class Api {
   }
 
   addLike(cardId) {
-    return fetch(`${this._url}/cards/likes/${cardId}`, {
+    return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: "PUT",
       headers: this._headers,
       credentials: 'include',
@@ -103,7 +103,7 @@ class Api {
   }
 
   removeLike(cardId) {
-    return fetch(`${this._url}/cards/likes/${cardId}`, {
+    return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: "DELETE",
       headers: this._headers,
       credentials: 'include',
@@ -128,6 +128,7 @@ class Api {
 }
 
 const api = new Api({ 
+  // baseUrl: "http://localhost:3000",
   baseUrl: "https://api.mesto.jack1ee7.nomoredomains.club",
   headers: {
     "Content-Type": "application/json",
