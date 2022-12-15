@@ -3,40 +3,35 @@ class Api {
     this._url = config.baseUrl;
   }
 
-  async register(email, password) {
-    const res = await fetch(`${this._url}/signup`, {
+  register(email, password) {
+    return fetch(`${this._url}/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ email, password }),
       credentials: 'include',
-    });
-    return this._getResponseData(res);
+    }).then(this._getResponseData);
   }
 
-  async authorize(email, password) {
-    const res = await fetch(`${this._url}/signin`, {
+  authorize(email, password) {
+    return fetch(`${this._url}/signin`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ email, password }),
       credentials: 'include',
-    });
-    return this._getResponseData(res);
+    }).then(this._getResponseData);
   }
 
-  async getContent() {
-    const res = await fetch(`${this._url}/users/me`, {
+  getContent(jwt) {
+    return fetch(`${this._url}/users/me`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
-      credentials: 'include',
-    });
-    return this._getResponseData(res);
-    
+    }).then(this._getResponseData);
   }
 
   _getResponseData(res) {
@@ -46,96 +41,75 @@ class Api {
     return Promise.reject(`Ошибка ${res.status}`);
   }
 
-  async getUserInfo() {
-    const res = await fetch(`${this._url}/users/me`, {
+  getUserInfo() {
+    return fetch(`${this._url}/users/me`, {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
       credentials: 'include',
-    });
-    return this._getResponseData(res);
+    }).then(this._getResponseData);
   }
 
-  async getInitialCards() {
-    const res = await fetch(`${this._url}/cards`, {
+  getInitialCards() {
+    return fetch(`${this._url}/cards`, {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
       credentials: 'include',
-    });
-    return this._getResponseData(res);
+    }).then(this._getResponseData);
   }
 
   getAllData() {
     return Promise.all([this.getUserInfo(), this.getInitialCards()]);
   }
 
-  async setUserInfo(data) {
-    const res = await fetch(`${this._url}/users/me`, {
+  setUserInfo(data) {
+    return fetch(`${this._url}/users/me`, {
       method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
       body: JSON.stringify({
         name: data.name,
         about: data.about,
       }),
       credentials: 'include',
-    });
-    return this._getResponseData(res);
+    }).then(this._getResponseData);
   }
 
-  async setAvatar(data) {
-    const res = await fetch(`${this._url}/users/me/avatar`, {
+  setAvatar(data) {
+    return fetch(`${this._url}/users/me/avatar`, {
       method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
       body: JSON.stringify({
         avatar: data.avatar,
       }),
       credentials: 'include',
-    });
-    return this._getResponseData(res);
+    }).then(this._getResponseData);
   }
 
-  async sendNewCard(data) {
-    const res = await fetch(`${this._url}/cards`, {
+  sendNewCard(data) {
+    return fetch(`${this._url}/cards`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
       body: JSON.stringify({
         name: data.name,
         link: data.link,
       }),
       credentials: 'include',
-    });
-    return this._getResponseData(res);
+    }).then(this._getResponseData);
   }
 
-  async addLike(cardId) {
-    const res = await fetch(`${this._url}/cards/${cardId}/likes`, {
+  addLike(cardId) {
+    return fetch(`${this._url}/cards/likes/${cardId}`, {
       method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
       credentials: 'include',
-    });
-    return this._getResponseData(res);
+    }).then(this._getResponseData);
   }
 
-  async removeLike(cardId) {
-    const res = await fetch(`${this._url}/cards/${cardId}/likes`, {
+  removeLike(cardId) {
+    return fetch(`${this._url}/cards/likes/${cardId}`, {
       method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
       credentials: 'include',
-    });
-    return this._getResponseData(res);
+    }).then(this._getResponseData);
   }
   //like button toggle
   changeLikeCardStatus(cardId, isLiked) {
@@ -146,15 +120,12 @@ class Api {
     }
   }
 
-  async deleteCard(cardId) {
-    const res = await fetch(`${this._url}/cards/${cardId}`, {
+  deleteCard(cardId) {
+    return fetch(`${this._url}/cards/${cardId}`, {
       method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
       credentials: 'include',
-    });
-    return this._getResponseData(res);
+    }).then(this._getResponseData);
   }
 }
 
