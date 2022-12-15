@@ -1,35 +1,35 @@
 class Api {
   constructor(config) {
     this._url = config.baseUrl;
-    this._headers = config.headers;
   }
 
   register(email, password) {
-    return fetch(`https://auth.nomoreparties.co/signup`, {
+    return fetch(`${this._url}/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ email, password }),
+      credentials: 'include',
     }).then(this._getResponseData);
   }
 
   authorize(email, password) {
-    return fetch(`https://auth.nomoreparties.co/signin`, {
+    return fetch(`${this._url}/signin`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ email, password }),
+      credentials: 'include',
     }).then(this._getResponseData);
   }
 
   getContent(jwt) {
-    return fetch(`https://auth.nomoreparties.co/users/me`, {
+    return fetch(`${this._url}/users/me`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${jwt}`,
       },
     }).then(this._getResponseData);
   }
@@ -45,6 +45,7 @@ class Api {
     return fetch(`${this._url}/users/me`, {
       method: "GET",
       headers: this._headers,
+      credentials: 'include',
     }).then(this._getResponseData);
   }
 
@@ -52,6 +53,7 @@ class Api {
     return fetch(`${this._url}/cards`, {
       method: "GET",
       headers: this._headers,
+      credentials: 'include',
     }).then(this._getResponseData);
   }
 
@@ -67,6 +69,7 @@ class Api {
         name: data.name,
         about: data.about,
       }),
+      credentials: 'include',
     }).then(this._getResponseData);
   }
 
@@ -77,6 +80,7 @@ class Api {
       body: JSON.stringify({
         avatar: data.avatar,
       }),
+      credentials: 'include',
     }).then(this._getResponseData);
   }
 
@@ -88,6 +92,7 @@ class Api {
         name: data.name,
         link: data.link,
       }),
+      credentials: 'include',
     }).then(this._getResponseData);
   }
 
@@ -95,6 +100,7 @@ class Api {
     return fetch(`${this._url}/cards/likes/${cardId}`, {
       method: "PUT",
       headers: this._headers,
+      credentials: 'include',
     }).then(this._getResponseData);
   }
 
@@ -102,6 +108,7 @@ class Api {
     return fetch(`${this._url}/cards/likes/${cardId}`, {
       method: "DELETE",
       headers: this._headers,
+      credentials: 'include',
     }).then(this._getResponseData);
   }
   //like button toggle
@@ -117,16 +124,11 @@ class Api {
     return fetch(`${this._url}/cards/${cardId}`, {
       method: "DELETE",
       headers: this._headers,
+      credentials: 'include',
     }).then(this._getResponseData);
   }
 }
 
-const api = new Api({
-  baseUrl: "https://nomoreparties.co/v1/cohort-29",
-  headers: {
-    authorization: "e988ea36-545d-4f3e-92ac-906bbdf6b61d",
-    "Content-Type": "application/json",
-  },
-});
+const api = new Api({ baseUrl: "http://localhost:3000" });
 
 export default api;

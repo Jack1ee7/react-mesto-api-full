@@ -21,7 +21,7 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateUser, isSending }) => {
     e.preventDefault();
     onUpdateUser(values);
   };
-  console.log(values)
+  
   return (
     <PopupWithForm
       isOpen={isOpen}

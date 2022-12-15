@@ -14,6 +14,7 @@ const Main = ({
 }) => {
   const currentUser = useContext(CurrentUserContext);
   //creating card elements from data
+  console.log(typeof cards)
   const cardsElements = cards.map((card) => (
     <li className="pictures__item" key={card._id}>
       <Card

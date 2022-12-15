@@ -13,7 +13,7 @@ const findUserById = (res, next, id) => {
   User.findById(id)
     .orFail(new NotFoundError('Пользователь с указанным _id не найден.'))
     .then((user) => {
-      res.send({ user });
+      res.send(user);
     })
     .catch((err) => {
       if (err.name === 'CastError') {
@@ -26,7 +26,7 @@ const findUserById = (res, next, id) => {
 
 module.exports.getUsers = (req, res, next) => {
   User.find({})
-    .then((user) => res.send({ user }))
+    .then((user) => res.send(user))
     .catch(next);
 };
 
@@ -82,8 +82,8 @@ module.exports.login = (req, res, next) => {
       );
       res.cookie('jwt', token, {
         maxAge: 3600000 * 24 * 7,
-        httpOnly: true,
-        sameSite: true,
+        httpOnly: false,
+        sameSite: false,
       });
       res.send({ message: 'Авторизация успешна' });
     })

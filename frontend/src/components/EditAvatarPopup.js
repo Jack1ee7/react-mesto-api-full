@@ -19,7 +19,6 @@ const EditAvatarPopup = ({ isOpen, onClose, onUpdateAvatar, isSending }) => {
     }); 
   };
 
-  console.log(values);
   return (
     <PopupWithForm
       name={"avatar"}

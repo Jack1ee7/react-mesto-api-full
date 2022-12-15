@@ -88,7 +88,7 @@ const App = () => {
       .then((res) => {
         if (res) {
           setEmail(email);
-          localStorage.setItem("jwt", res.token);
+          localStorage.setItem("jwt", document.cookie.split("=")[1]);
           setIsLoggedIn(true);
           history.push("/");
         }

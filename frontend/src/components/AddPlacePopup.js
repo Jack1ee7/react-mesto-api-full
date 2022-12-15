@@ -17,7 +17,6 @@ const AddPlacePopup = ({ isOpen, onClose, onAddPlace, isSending }) => {
       link: e.target.link.value,
     });
   };
-  console.log(values);
   return (
     <PopupWithForm
       name={"add"}
