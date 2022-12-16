@@ -30,5 +30,5 @@
 
 #### Ссылки
 * IP 51.250.107.134
-* Frontend https://mesto.jack1ee7.nomoredomains.club.
+* Frontend https://mesto.jack1ee7.nomoredomains.club
 * Backend https://api.mesto.jack1ee7.nomoredomains.club
