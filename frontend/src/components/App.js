@@ -44,7 +44,9 @@ const App = () => {
 
   // check if token in local storage, if it exists then auth user
   useEffect(() => {
-    auth();
+    if (localStorage.getItem("loggedIn")) {
+      auth();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
