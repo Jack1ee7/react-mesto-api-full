@@ -1,6 +1,8 @@
 .pictures {
   margin-top: 50px;
   padding-bottom: 67px;
+  transition: margin-right 0.3s ease-in-out;
+  transition: margin-left 0.3s ease-in-out;
 }
 
 @media screen and (max-width: 950px) {
