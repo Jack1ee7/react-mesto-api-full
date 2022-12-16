@@ -4,27 +4,27 @@ const cookieParser = require('cookie-parser');
 require('dotenv').config();
 const { errors } = require('celebrate');
 const cors = require('cors');
+const helmet = require('helmet');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const { CORS } = require('./utils/constants');
+const { CORS, limiter } = require('./utils/constants');
+const { serverError } = require('./utils/errors/ServerError');
+
+const { MONGO_URI } = process.env;
 
 const app = express();
 
 app.use('*', cors(CORS));
+app.use(helmet());
+app.use(limiter);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
+mongoose.connect(MONGO_URI);
 
 app.use(cookieParser());
 
 app.use(requestLogger);
-
-app.get('/crash-test', () => {
-  setTimeout(() => {
-    throw new Error('Сервер сейчас упадёт');
-  }, 0);
-});
 
 app.use(require('./routes/index'));
 
@@ -33,16 +33,7 @@ app.use(errorLogger);
 app.use(errors());
 
 app.use((err, req, res, next) => {
-  const { statusCode = 500, message } = err;
-
-  res
-    .status(statusCode)
-    .send({
-      message: statusCode === 500
-        ? 'На сервере произошла ошибка'
-        : message,
-    });
-  next();
+  serverError(err, req, res, next);
 });
 
 app.listen(3000);

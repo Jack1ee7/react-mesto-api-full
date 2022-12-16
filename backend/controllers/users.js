@@ -53,6 +53,7 @@ module.exports.createUser = (req, res, next) => {
       name,
       about,
       avatar,
+      asdasdasdasd,
     }))
     .then((data) => {
       const user = data.toObject();
