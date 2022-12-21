@@ -22,6 +22,14 @@ class Api {
     }).then(this._getResponseData);
   }
 
+  signout() {
+    return fetch(`${this._url}/signout`, {
+      method: "POST",
+      headers: this._headers,
+      credentials: 'include',
+    }).then(this._getResponseData);
+  }
+
   getContent() {
     return fetch(`${this._url}/users/me`, {
       method: "GET",

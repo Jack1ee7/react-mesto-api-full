@@ -1,13 +1,12 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
-
-const { NODE_ENV, JWT_SECRET } = process.env;
 const User = require('../models/user');
-
 const NotFoundError = require('../utils/errors/NotFoundError');
 const ValidationError = require('../utils/errors/ValidationError');
 const AlreadyRegistredError = require('../utils/errors/AlreadyRegistredError');
+
+const { NODE_ENV = 'development', JWT_SECRET = 'dev-secret' } = process.env;
 
 const findUserById = (res, next, id) => {
   User.findById(id)
@@ -89,6 +88,11 @@ module.exports.login = (req, res, next) => {
       res.send({ message: 'Авторизация успешна' });
     })
     .catch(next);
+};
+
+module.exports.signout = (req, res) => {
+  res.clearCookie('jwt')
+    .send({ message: 'Выход из аккаунта успешен' });
 };
 
 module.exports.updateProfile = (req, res, next) => {
