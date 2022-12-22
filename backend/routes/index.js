@@ -3,32 +3,14 @@ const router = require('express').Router();
 const NotFoundError = require('../utils/errors/NotFoundError');
 const auth = require('../middlewares/auth');
 const { REGEX } = require('../utils/constants');
-const { createUser, login } = require('../controllers/users');
+const { createUser, login, signout } = require('../controllers/users');
+const { loginRule, createUserRule } = require('../utils/validationRules');
 
-router.post(
-  '/signin',
-  celebrate({
-    body: Joi.object().keys({
-      email: Joi.string().required().email(),
-      password: Joi.string().required().min(8),
-    }),
-  }),
-  login,
-);
+router.post('/signin', loginRule, login);
 
-router.post(
-  '/signup',
-  celebrate({
-    body: Joi.object().keys({
-      email: Joi.string().required().email(),
-      password: Joi.string().required().min(8),
-      name: Joi.string().min(2).max(30),
-      about: Joi.string().min(2).max(30),
-      avatar: Joi.string().regex(REGEX),
-    }),
-  }),
-  createUser,
-);
+router.post('/signup', createUserRule, createUser);
+
+router.post('/signout', signout);
 
 router.use(auth);
 

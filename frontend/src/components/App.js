@@ -42,11 +42,8 @@ const App = () => {
   const [email, setEmail] = useState("email");
   const history = useHistory();
 
-  // check if token in local storage, if it exists then auth user
   useEffect(() => {
-    if (localStorage.getItem("loggedIn")) {
-      auth();
-    }
+    auth();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -87,7 +84,6 @@ const App = () => {
       .then((res) => {
         if (res) {
           setEmail(email);
-          localStorage.setItem("loggedIn", "true");
           setIsLoggedIn(true);
           history.push("/");
         }
@@ -118,8 +114,11 @@ const App = () => {
   }, [isLoggedIn]);
 
   const handleLogout = () => {
-    localStorage.removeItem("loggedIn");
-    setIsLoggedIn(false);
+    api
+      .signout()
+      .catch((err) => {
+        console.log(`Ошибка ${err}`);
+      });
   }
 
   //-----------------Card section----------------//
