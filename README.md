@@ -1,9 +1,11 @@
 # Проект Mesto с деплоем на сервер (бэкенд + фронтенд)
+
 Репозиторий для приложения проекта Mesto, включающий фронтенд и бэкенд части приложения со следующими возможностями: авторизация и регистрация пользователей, операции с карточками и пользователями, система оценки.
 
 ![](https://github.com/Jack1ee7/react-mesto-api-full/blob/main/frontend/src/images/mesto.jack1ee7.nomoredomains.club_.png)
 
 #### Основной функционал
+
 + Регистрация
 + Авторизация
 + Редактирование аватара
@@ -14,6 +16,7 @@
 + Открытие фотографии в полном размере
 
 #### Технологии
+
 + HTML5
 + CCS3
 + JavaScript (стандарт ES6)
@@ -29,6 +32,7 @@
 + MongodDB
 
 #### Ссылки
+
 * IP 51.250.107.134
 * Frontend https://mesto.jack1ee7.nomoredomains.club
 * Backend https://api.mesto.jack1ee7.nomoredomains.club
