@@ -1,7 +1,7 @@
 {
   "name": "express-mesto-gha",
-  "version": "0.0.2",
-  "description": "Проект Mesto фронтенд + бэкенд",
+  "version": "1.0.0",
+  "description": "Проект Mesto бэкенд",
   "main": "./app.js",
   "scripts": {
     "lint": "npx eslint .",
